@@ -1,4 +1,5 @@
 import numpy as np
+import lbp
 import cv2
 import ccv
 import cropper
@@ -26,7 +27,7 @@ def getTrainingData():
     for classname in filenamesWithLabel[:,0]:
         # now we are in the classes so we will get half of the images to trains out classifier
         imgnames = os.listdir(classname)
-        trainimgs = int(len(imgnames) / 4)
+        trainimgs = int(len(imgnames) / 2)
         imgnames = np.array([(classname + "/" + x) for x in imgnames])
         # here we get the names of the files in the directory related to a fruit or vegetable
         counter = 1
@@ -34,8 +35,10 @@ def getTrainingData():
             img = cv2.imread(imgpath)
             img = cropper.cropImage(img)
             ccvresult = np.array(ccv.get_ccv(img), np.float32).reshape(1,64)
+            lbpresult = np.array(lbp.get_lbp(img)).reshape(1,64)
             labelarray =  np.array(label).reshape(1,1)
-            result = np.concatenate([ccvresult,labelarray],axis = 1)
+            result = np.concatenate([ccvresult,lbpresult],axis = 1)
+            result = np.concatenate([result,labelarray],axis = 1)
             if(firsttime):
                 training = result
                 firsttime = False
