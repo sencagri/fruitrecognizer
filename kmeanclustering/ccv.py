@@ -63,7 +63,7 @@ def ccv(src, tau=0, n=64):
           beta[bin_idx] = beta[bin_idx] + area_size
   return alpha, beta
 
-def ccv_plot(img, alpha, beta, n=64):
+def _ccv_plot(img, alpha, beta, n=64):
   import matplotlib.pyplot as plt
   X = [x for x in range(n*2)]
   Y = alpha.tolist()+beta.tolist()
@@ -78,11 +78,8 @@ def ccv_plot(img, alpha, beta, n=64):
   #plt.xticks(X, (['alpha']*n)+(['beta']*n))
   plt.show()  
 
-def ccv(img):
-  argvs = sys.argv
-  argc = len(argvs)
-  imsrc = img
-  img = cv2.imread(imsrc)
+def get_ccv(imgSrc):
+  img = imgSrc
   n = int(32)
   alpha, beta = ccv(img, tau=0,n=n)
   CCV = alpha.tolist()+beta.tolist()

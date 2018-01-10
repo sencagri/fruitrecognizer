@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "kmeanclustering", "kmeanclustering\kmeanclustering.pyproj", "{9DC964FB-C5C6-46B1-B846-BBB4092B0D73}"
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "fruitandvegRecognizer", "kmeanclustering\fruitandvegRecognizer.pyproj", "{9DC964FB-C5C6-46B1-B846-BBB4092B0D73}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

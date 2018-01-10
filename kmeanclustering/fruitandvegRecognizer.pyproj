@@ -3,13 +3,14 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>9dc964fb-c5c6-46b1-b846-bbb4092b0d73</ProjectGuid>
-    <ProjectHome>.</ProjectHome>
-    <StartupFile>kmeanclustering.py</StartupFile>
+    <ProjectHome>
+    </ProjectHome>
+    <StartupFile>main.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>kmeanclustering</Name>
+    <Name>fruitandvegRecognizer</Name>
     <RootNamespace>kmeanclustering</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -22,7 +23,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="ccv.py" />
-    <Compile Include="kmeanclustering.py" />
+    <Compile Include="main.py" />
     <Compile Include="cropper.py">
       <SubType>Code</SubType>
     </Compile>

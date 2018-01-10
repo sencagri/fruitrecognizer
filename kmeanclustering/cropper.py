@@ -9,7 +9,7 @@ def cropImage(img, x_scale = 0.2, y_scale = 0.2):
     forcropping = img
     img = cv2.GaussianBlur(img, (9,9),0)
     #img= img_o
-    cv2.imshow("original", img)
+    #cv2.imshow("original", img)
     img = cv2.cvtColor(img, cv2.COLOR_RGB2HSV)
     Z = img.reshape((-1,3))
     # convert to np.float32
@@ -36,5 +36,5 @@ def cropImage(img, x_scale = 0.2, y_scale = 0.2):
     closing = cv2.morphologyEx(closing, cv2.MORPH_CLOSE, kernel)
     closing = cv2.cvtColor(closing, cv2.COLOR_GRAY2BGR)
     cropped = cv2.bitwise_and(forcropping, closing)
-    cv2.imshow("cropped", cropped)
+    #cv2.imshow("cropped", cropped)
     return cropped
