@@ -4,6 +4,19 @@ import numpy as np
 import cv2
 
 def QuantizeColor(img, n=64):
+    Z = img.reshape((-1,3))
+    Z = np.float32(Z)
+
+    criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 10, 1.0)
+    K = 32
+    ret,label,center=cv2.kmeans(Z,K,None,criteria,2,cv2.KMEANS_PP_CENTERS)
+
+    # Now convert back into uint8, and make original image
+    center = np.uint8(center)
+    res = center[label.flatten()]
+    res2 = res.reshape((img.shape))
+    return res2
+"""
   div = 256//n
   rgb = cv2.split(img)
   q = []
@@ -13,6 +26,7 @@ def QuantizeColor(img, n=64):
     q.append(quantized.astype(np.uint8))
   d_img = cv2.merge(q)
   return d_img
+"""
 
 """
 Proccess of Computing CCV(color coherence vector)
@@ -67,8 +81,8 @@ def _ccv_plot(img, alpha, beta, n=64):
   import matplotlib.pyplot as plt
   X = [x for x in range(n*2)]
   Y = alpha.tolist()+beta.tolist()
-  with open('ccv.csv','w') as f:
-    f.write(str(Y))
+  #with open('ccv.csv','w') as f:
+    #f.write(str(Y))
   im = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
   plt.subplot(2,1,1)
   plt.imshow(im)

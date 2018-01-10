@@ -12,6 +12,7 @@
     <OutputPath>.</OutputPath>
     <Name>fruitandvegRecognizer</Name>
     <RootNamespace>kmeanclustering</RootNamespace>
+    <IsWindowsApplication>False</IsWindowsApplication>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -23,6 +24,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="ccv.py" />
+    <Compile Include="filefinder.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="main.py" />
     <Compile Include="cropper.py">
       <SubType>Code</SubType>
