@@ -9,7 +9,7 @@ def QuantizeColor(img, n=64):
 
     criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 10, 1.0)
     K = 64
-    ret,label,center=cv2.kmeans(Z,K,None,criteria,5,cv2.KMEANS_PP_CENTERS)
+    ret,label,center=cv2.kmeans(Z,K,None,criteria,2,cv2.KMEANS_PP_CENTERS)
 
     # Now convert back into uint8, and make original image
     center = np.uint8(center)
@@ -44,7 +44,7 @@ def ccv(src, tau=0, n=64):
     aspect = 300.0//col
     
     if(aspect != 0):
-        img = cv2.resize(img, None, fx=0.1, fy=0.1, interpolation = cv2.INTER_LINEAR)
+      img = cv2.resize(img, None, fx=0.1, fy=0.1, interpolation = cv2.INTER_LINEAR)
   row, col, channels = img.shape
   # blur
   img = cv2.GaussianBlur(img, (3,3),0)
