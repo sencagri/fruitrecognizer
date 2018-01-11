@@ -6,7 +6,7 @@ import cropper
 import os 
 
 def getTrainingData():
-    path = "dataset/"
+    path = "train/"
     # get all directories
     filenames = os.listdir(path)
 
@@ -46,7 +46,7 @@ def getTrainingData():
                 training = np.vstack((training,result))
             
             counter += 1
-            print(classname + " " + str(counter))
+            print(classname + " " + str(counter) + " img : " + imgpath)
 
         
         label += 1

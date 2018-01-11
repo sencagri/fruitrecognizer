@@ -4,9 +4,10 @@ import cv2
 import ccv
 import cropper
 import os 
+import classify
 
 def testme(knn):
-    path = "train/"
+    path = "dataset/"
     # get all directories
     filenames = os.listdir(path)
 
@@ -41,21 +42,23 @@ def testme(knn):
             lbpresult = np.array(lbp.get_lbp(img)).reshape(1,64)
             #newcomer = ccvresult
             newcomer = np.concatenate([ccvresult,lbpresult],axis = 1)
-            ret, result, neihgbours, dist = knn.findNearest(newcomer, k=15)
+            #ret, result, neihgbours, dist = knn.findNearest(newcomer, k=5)
+            result = knn.findClass(newcomer)
+            
             if(label == result):
                 good += 1
                 g_good += 1
             else:
                 bad += 1
                 g_bad += 1
-            #print(classname + " label : " + str(label) + " result : " + str(result) + "     result" + str(label==result))
-
-        print(classname + " good : " + str(good) + " bad : " + str(bad) + " ratio : " + str(good/(bad+good)))
-        print("global good : " + str(g_good) + " global bad : " + str(g_bad))
+            print(classname + " label : " + str(label) + " result : " + str(result) + "     result" + str(label==result))
+        
+        print(classname + " good:" + str(good) + " bad:" + str(bad) + " ratio: % " + format(100*good/(bad+good),'.2f'))
         good = 0
         bad = 0
         
         label += 1
-        print(str(testresult.shape))
+       
 
+    print("global good:" + str(g_good) + " global bad:" + str(g_bad) + "global success:" + format(100*g_good/(g_good+g_bad),'.2f'))
     return testresult
