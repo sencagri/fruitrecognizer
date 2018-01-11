@@ -97,6 +97,7 @@ def get_ccv(imgSrc):
   n = int(32)
   alpha, beta = ccv(img, tau=0,n=n)
   CCV = alpha.tolist()+beta.tolist()
+  '''calisantest'''
   '''
   assert(sum(CCV) == img.size)
   assert(n == len(alpha) and n == len(beta))
