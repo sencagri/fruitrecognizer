@@ -9,7 +9,7 @@ def QuantizeColor(img, n=64):
 
     criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 10, 1.0)
     K = 64
-    ret,label,center=cv2.kmeans(Z,K,None,criteria,3,cv2.KMEANS_PP_CENTERS)
+    ret,label,center=cv2.kmeans(Z,K,None,criteria,5,cv2.KMEANS_PP_CENTERS)
 
     # Now convert back into uint8, and make original image
     center = np.uint8(center)
