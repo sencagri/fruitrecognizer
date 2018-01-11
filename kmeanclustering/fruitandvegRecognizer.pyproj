@@ -25,6 +25,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="ccv.py" />
+    <Compile Include="classify.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="filefinder.py">
       <SubType>Code</SubType>
     </Compile>
