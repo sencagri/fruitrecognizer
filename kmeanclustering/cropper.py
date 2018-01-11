@@ -3,11 +3,14 @@ import sys
 import numpy as np
 import cv2
 
-def cropImage(img, x_scale = 0.2, y_scale = 0.2):
+def cropImage(img, x_scale = 0.1, y_scale = 0.1):
     img_o = img
-    img = cv2.resize(img_o, (0,0), fx=x_scale, fy=y_scale,interpolation=cv2.INTER_CUBIC);
+    img = cv2.resize(img_o, (0,0), fx=x_scale, fy=y_scale,interpolation=cv2.INTER_CUBIC)
+    onlyresized = img
     forcropping = img
-    img = cv2.GaussianBlur(img, (9,9),0)
+    return img , onlyresized
+
+    img = cv2.GaussianBlur(img, (3,3),0)
     #img= img_o
     #cv2.imshow("original", img)
     img = cv2.cvtColor(img, cv2.COLOR_RGB2HSV)
@@ -37,4 +40,4 @@ def cropImage(img, x_scale = 0.2, y_scale = 0.2):
     closing = cv2.cvtColor(closing, cv2.COLOR_GRAY2BGR)
     cropped = cv2.bitwise_and(forcropping, closing)
     #cv2.imshow("cropped", cropped)
-    return cropped
+    return cropped,onlyresized
