@@ -51,7 +51,7 @@ def testme(knn):
             else:
                 bad += 1
                 g_bad += 1
-            print(classname + " label : " + str(label) + " result : " + str(result) + "     result" + str(label==result))
+            #print(classname + " label : " + str(label) + " result : " + str(result) + "     result" + str(label==result))
         
         print(classname + " good:" + str(good) + " bad:" + str(bad) + " ratio: % " + format(100*good/(bad+good),'.2f'))
         good = 0

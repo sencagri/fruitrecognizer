@@ -13,21 +13,14 @@ def main():
     #training = filefinder.getTrainingData()        
     
     trainingdata = training[:,range(0,128)].astype(np.float32)
-    responses = np.array(training[:,128]).reshape(1330,1).astype(np.float32)
+    size = len(trainingdata)
+    responses = np.array(training[:,128]).reshape(size,1).astype(np.float32)
     
     cc = classify.classifier(trainingdata, responses)
     
-    knn = cv2.ml.KNearest_create()
-    knn.train(trainingdata, cv2.ml.ROW_SAMPLE, responses)
-
-
-
     #tester.testme(knn)
     tester.testme(cc)
-    test = 5
-    print("bitti")
+    print("end of program")
+
 if __name__ == "__main__":
     main()
-
-cv2.waitKey(0)
-cv2.destroyAllWindows();

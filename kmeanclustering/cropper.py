@@ -3,7 +3,7 @@ import sys
 import numpy as np
 import cv2
 
-def cropImage(img, x_scale = 0.1, y_scale = 0.1):
+def cropImage(img, x_scale = 0.5, y_scale = 0.5):
     img_o = img
     img = cv2.resize(img_o, (0,0), fx=x_scale, fy=y_scale,interpolation=cv2.INTER_CUBIC)
     onlyresized = img
